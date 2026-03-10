@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import fileUpload from "express-fileupload";
-import { errorMiddleware } from "./middleware/errorHandler";
+import { errorMiddleware } from "./middleware/errorHandler.js";
 dotenv.config();
 const app = express();
 
