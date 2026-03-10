@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import fileUpload from "express-fileupload";
+import { errorMiddleware } from "./middleware/errorHandler";
 dotenv.config();
 const app = express();
 
@@ -21,6 +22,6 @@ app.use(fileUpload({
     useTempFiles: true,
 }));
 
-app.use()
+app.use(errorMiddleware)
 
 export default app;
