@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import express from "express";
 import fileUpload from "express-fileupload";
 import { errorMiddleware } from "./middleware/errorHandler.js";
+import { create_tables } from "./utils/create_table.js";
 dotenv.config();
 const app = express();
 
@@ -21,6 +22,8 @@ app.use(fileUpload({
     tempFileDir: "./uploads",
     useTempFiles: true,
 }));
+
+create_tables();
 
 app.use(errorMiddleware)
 
