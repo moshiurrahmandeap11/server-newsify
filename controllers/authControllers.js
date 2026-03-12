@@ -72,3 +72,17 @@ export const log_out = catch_async_errors(async(req, res, next) => {
         message: "Log out successfully",
     });
 });
+
+export const forgot_password = catch_async_errors(async(req, res, next) => {
+    const {email} = req.body;
+    const {frontendUrl} = req.query;
+    let user_result = await database.query(
+        `SELECT * FROM users WHERE email = $1`, [email.toLowerCase()]
+    );
+
+    if(user_result.rows.length === 0) {
+        return next(new ErrorHandler("User not found with this email", 404));
+    }
+
+    const user = user_result.rows[0];
+})
