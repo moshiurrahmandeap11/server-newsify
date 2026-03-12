@@ -8,6 +8,11 @@ import { create_tables } from "./utils/create_table.js";
 dotenv.config();
 const app = express();
 
+
+import users from "./routes/usersRoute/authRoutes.js";
+
+
+
 app.use(cors({
     origin: [process.env.FRONTEND_URL],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
@@ -22,6 +27,10 @@ app.use(fileUpload({
     tempFileDir: "./uploads",
     useTempFiles: true,
 }));
+
+
+// api endpoints
+app.use("/api/v1/users", users);
 
 create_tables();
 
